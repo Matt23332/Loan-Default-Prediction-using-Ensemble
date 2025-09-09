@@ -3,15 +3,14 @@ import { Login } from './login/login';
 
 export const routes: Routes = [
     {
-        path: '',
-        redirectTo: 'login',
+        path: '', 
+        redirectTo: 'login', 
         pathMatch: 'full'
     },
-
     {
         path: 'login',
-        component: Login
+        component: Login    
     }
-]
+];
 
 export class AppRoutingModule { }

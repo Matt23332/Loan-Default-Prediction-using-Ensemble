@@ -25,6 +25,7 @@
     "@angular/common": "^20.2.0",
     "@angular/compiler": "^20.2.0",
     "@angular/core": "^20.2.0",
+    "@angular/fire": "^20.0.1",
     "@angular/forms": "^20.2.0",
     "@angular/platform-browser": "^20.2.0",
     "@angular/router": "^20.2.0",
@@ -32,6 +33,7 @@
     "@fortawesome/fontawesome-free": "^7.0.1",
     "@fortawesome/free-solid-svg-icons": "^7.0.1",
     "bootstrap": "^5.3.8",
+    "firebase": "^11.10.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
