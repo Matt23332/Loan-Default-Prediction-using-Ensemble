@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Auth } from '../../shared/auth';
 import { Router } from '@angular/router';
+import { onAuthStateChanged, User } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-navbar',
@@ -14,15 +16,11 @@ import { Router } from '@angular/router';
 export class Navbar {
   userEmail: string | null = '';
 
-  constructor(private auth: Auth, private router: Router) { }
+  constructor(private auth: Auth, private router: Router, private fireAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
-    this.auth.getCurrentUser().then(user => {
-      if (user) {
-        this.userEmail = user.email;
-      } else {
-        this.userEmail = null;
-      }
+    this.fireAuth.authState.subscribe(user => {
+      this.userEmail = user ? user.email : null;
     });
   }
 
