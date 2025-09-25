@@ -1,1 +1,48 @@
-<p>dashboard works!</p>
+<nav class="navbar">
+    <div class="nav-left">
+        <h3>Loan Default Prediction</h3>
+        <ul class="nav-links">
+            <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+            <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+            <li><a routerLink="/analysis" routerLinkActive="active">Analysis</a></li>
+            <li><a routerLink="/support" routerLinkActive="active">Support</a></li>
+        </ul>
+    </div>
+    <div class="nav-right">
+        <span *ngIf="userEmail">Logged in as: {{ userEmail }}</span>
+        <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+</nav>
+
+<section class="welcome">
+    <h2>Welcome to the Loan Default Predictor</h2>
+    <p>
+        This dashboard provides insight and tools that assist the users predict the likelihood of loan defaults using machine learning models.
+        Navigate through the sections to explore data visualizations, model performance metrics, and prediction tools.
+    </p>
+</section>
+
+<section class="cards">
+    <div class="card">
+        <h3>Predict Loan Default</h3>
+        <p>
+            Input loan applicant details and get a prediction of whether the loan is likely to default or not.
+        </p>
+        <button routerLink="/predict" class="form-btn">Create New Loan Application</button>
+    </div>
+    <div class="card">
+        <h3>Analyse Risk</h3>
+        <p>
+            Explore the probability scores and understand the underlying risk factors for each prediction.
+        </p>
+    </div>
+    <div class="card">
+        <h3>Decision Support</h3>
+        <p>
+            Use prediction insights to make informed lending decisions and reduce financial risk.
+        </p>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>&copy; 2025 Loan Default Prediction. All rights reserved.</p>
