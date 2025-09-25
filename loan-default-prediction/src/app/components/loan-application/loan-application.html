@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+
+<div class="form-container">
+    <h2>Loan Application</h2>
+
+    <form [formGroup]="loanForm" (ngSubmit)="submitApplication()">
+        <div class="form-field">
+            <label>Name:</label>
+            <input formControlName="name" />
+        </div>
+        <div class="form-field">
+            <label>Income:</label>
+            <input formControlName="income" />
+        </div>
+        <div class="form-field">
+            <label>Loan Amount:</label>
+            <input formControlName="loanAmount" />
+        </div>
+        <div class="form-field">
+            <label>Loan Purpose:</label>
+            <input formControlName="loanPurpose" />
+        </div>
+        <div class="form-field">
+            <label>Credit Score:</label>
+            <input formControlName="creditScore" />
+        </div>
+        <div class="form-field">
+            <label>Employment Status:</label>
+            <select formControlName="employmentStatus">
+                <option value="employed">Employed</option>
+                <option value="unemployed">Unemployed</option>
+                <option value="self-employed">Self-Employed</option>
+                <option value="student">Student</option>
+                <option value="retired">Retired</option>
+            </select>
+        </div>
+        <div class="form-field">
+            <label>Loan Term:</label>
+            <input formControlName="loanTerm" />
+        </div>
+        <button type="submit" [disabled]="loanForm.invalid">Submit Application</button>
+    </form>
+</div>

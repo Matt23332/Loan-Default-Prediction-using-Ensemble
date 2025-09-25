@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Auth } from '../../shared/auth';
 import { Router } from '@angular/router';
-import { Navbar } from '../../shared/navbar/navbar';
 
 @Component({
-  selector: 'app-dashboard',
-  imports: [CommonModule, FormsModule, Navbar],
-  templateUrl: './dashboard.html',
-  styleUrls: ['./dashboard.css']
+  selector: 'app-navbar',
+  standalone: true,
+  imports: [RouterModule, CommonModule],
+  templateUrl: './navbar.html',
+  styleUrls: ['./navbar.css']
 })
-export class Dashboard implements OnInit {
+export class Navbar {
   userEmail: string | null = '';
 
   constructor(private auth: Auth, private router: Router) { }
@@ -24,10 +24,6 @@ export class Dashboard implements OnInit {
         this.userEmail = null;
       }
     });
-  }
-
-  goToForm() {
-    this.router.navigate(['/loan-application']);
   }
 
   logout() {

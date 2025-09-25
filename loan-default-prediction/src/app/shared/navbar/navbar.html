@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <div class="nav-left">
+    <h3>Loan Default Prediction</h3>
+    <ul class="nav-links">
+      <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+      <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+      <li><a routerLink="/analysis" routerLinkActive="active">Analysis</a></li>
+      <li><a routerLink="/support" routerLinkActive="active">Support</a></li>
+      <li><a routerLink="/loan-application" routerLinkActive="active">New Application</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <span *ngIf="userEmail">Logged in as: {{ userEmail }}</span>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+</nav>
