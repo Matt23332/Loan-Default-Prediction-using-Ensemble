@@ -40,11 +40,15 @@ export class Login {
 
   signInWithGoogle() {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(this.auth, provider).then(() => {
-      this.router.navigate(['/']);
+    signInWithPopup(this.auth, provider).then((result) => {
+      this.message = 'Login successful';
+      this.isError = false;
+      localStorage.setItem('token', 'true');
+      this.router.navigate(['/dashboard']);
     })
     .catch((error) => {
-      alert(error.message);
+      this.message = 'Google sign-in failed';
+      this.isError = true;
     });
   }
 }
