@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Auth } from '../../shared/auth';
 import { Router } from '@angular/router';
+import { Navbar } from '../../shared/navbar/navbar';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Navbar],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.css']
 })
@@ -23,6 +24,10 @@ export class Dashboard implements OnInit {
         this.userEmail = null;
       }
     });
+  }
+
+  goToForm() {
+    this.router.navigate(['/loan-application']);
   }
 
   logout() {
