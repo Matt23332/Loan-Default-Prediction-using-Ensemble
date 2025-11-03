@@ -4,6 +4,7 @@ import { Dashboard } from './components/dashboard/dashboard';
 import { Register } from './components/register/register';
 import { ForgotPassword } from './components/forgot-password/forgot-password';
 import { NgModule } from '@angular/core';
+import { ProfileComponent } from './components/profile/profile';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -12,6 +13,7 @@ export const routes: Routes = [
     {path: 'register', component: Register},
     {path: 'forgot-password', component: ForgotPassword},
     {path: 'verify-email', component: ForgotPassword},
+    {path: 'profile', component: ProfileComponent},
     {path: '**', redirectTo: 'login'}
 ];
 
