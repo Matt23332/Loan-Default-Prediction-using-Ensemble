@@ -5,12 +5,13 @@ import { ProfileService, UserProfile } from '../../shared/profile';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Navbar } from "../../shared/navbar/navbar";
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.html',
   styleUrls: ['./profile.css'],
-  imports: [ReactiveFormsModule, CommonModule]
+  imports: [ReactiveFormsModule, CommonModule, Navbar]
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   private auth = inject(Auth);
