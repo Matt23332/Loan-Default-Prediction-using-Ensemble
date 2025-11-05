@@ -4,7 +4,8 @@ import { Dashboard } from './components/dashboard/dashboard';
 import { Register } from './components/register/register';
 import { ForgotPassword } from './components/forgot-password/forgot-password';
 import { NgModule } from '@angular/core';
-import { LoanApplicationComponent } from './components/loan-application/loan-application';
+import { ProfileComponent } from './components/profile/profile';
+import { LoanApplication } from './components/loan-application/loan-application';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -13,7 +14,8 @@ export const routes: Routes = [
     {path: 'register', component: Register},
     {path: 'forgot-password', component: ForgotPassword},
     {path: 'verify-email', component: ForgotPassword},
-    {path: 'loan-application', component: LoanApplicationComponent},
+    {path: 'profile', component: ProfileComponent},
+    {path: 'loan-application', component: LoanApplication},
     {path: '**', redirectTo: 'login'}
 ];
 

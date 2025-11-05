@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
 
 export const environment = {
   production: false,
@@ -12,3 +13,5 @@ export const environment = {
     measurementId: "G-DY118TWY51"
   }
 }
+
+const app = initializeApp(environment.firebase);

@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+
+<div class="profile-edit-container">
+  <h2>Edit Profile</h2>
+  
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+  
+  <div *ngIf="errorMessage" class="alert alert-error">
+    {{ errorMessage }}
+  </div>
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="profile-picture-section">
+      <div class="avatar-preview">
+        <img [src]="previewUrl || 'assets/default-avatar.png'" alt="Profile Picture">
+      </div>
+      <input 
+        type="file" 
+        accept="image/*" 
+        (change)="onFileSelected($event)"
+        id="photoInput"
+        style="display: none;">
+      <label for="photoInput" class="file-label">Change Photo</label>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Display Name *</label>
+      <input 
+        type="text" 
+        id="displayName" 
+        formControlName="name"
+        placeholder="Enter your name">
+      <div class="error" *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched">
+        Display name is required (min 2 characters)
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input 
+        type="email" 
+        id="email" 
+        formControlName="email"
+        placeholder="Enter your email">
+      <div class="error" *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched">
+        Valid email is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input 
+        type="tel" 
+        id="phoneNumber" 
+        formControlName="mobile"
+        placeholder="Enter your phone number">
+    </div>
+
+    <button 
+      type="submit" 
+      [disabled]="profileForm.invalid || loading"
+      class="submit-btn">
+      {{ loading ? 'Updating...' : 'Update Profile' }}
+    </button>
+
+  </form>
+</div>
