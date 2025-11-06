@@ -1,11 +1,12 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, DestroyRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Auth, authState, User } from '@angular/fire/auth';
+import { Auth, authState } from '@angular/fire/auth';
 import { ProfileService, UserProfile } from '../../shared/profile';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Navbar } from "../../shared/navbar/navbar";
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-profile',
@@ -18,6 +19,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private profileService = inject(ProfileService);
   private fb = inject(FormBuilder);
+  private destroyRef = inject(DestroyRef);
 
   profileForm: FormGroup;
   selectedFile: File | null = null;
@@ -34,20 +36,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
       email: ['', [Validators.required, Validators.email]],
       mobile: [''],
     });
-  }
 
-  ngOnInit(): void {
-    console.log('ProfileComponent initialized'); // debugging
-    this.loading = true;
-    
-    this.authSubscription = authState(this.auth).subscribe({
+    authState(this.auth).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (user) => {
-        console.log('auth state changed, user: ', user);
-        this.currentUser = user;
-
         if (user) {
-          console.log('user authenticated: ', user);
-          console.log('user email: ', user.email);
+          console.log('auth state changed, user: ', user);
+          this.currentUser = user;
           this.loadUserProfile();
         } else {
           console.error('no authenticated user found');
@@ -59,11 +53,16 @@ export class ProfileComponent implements OnInit, OnDestroy {
         }
       },
       error: (error) => {
-        console.error('Auth state error: ', error);
+        console.error('auth state error: ', error);
         this.loading = false;
         this.errorMessage = 'Authentication error';
       }
     });
+  }
+
+  ngOnInit(): void {
+    console.log('ProfileComponent initialized'); // debugging
+    this.loading = true;
   }
 
   ngOnDestroy(): void {
