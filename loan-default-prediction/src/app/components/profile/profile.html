@@ -14,7 +14,7 @@
   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <div class="profile-picture-section">
       <div class="avatar-preview">
-        <img [src]="previewUrl || 'assets/default-avatar.png'" alt="Profile Picture">
+        <img [src]="previewUrl || ''" alt="Profile Picture">
       </div>
       <input 
         type="file" 
