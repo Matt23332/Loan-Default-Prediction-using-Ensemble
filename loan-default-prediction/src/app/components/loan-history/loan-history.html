@@ -1,0 +1,79 @@
+<div class="loan-history-container">
+  <app-navbar></app-navbar>
+
+  <div class="content-wrapper">
+    <div class="header">
+      <h1>Loan Application History</h1>
+      <button class="btn btn-primary" (click)="newApplication()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        New Application
+      </button>
+    </div>
+
+    <div *ngIf="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Loading applications...</p>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <div *ngIf="!loading && applications.length === 0" class="empty-state">
+      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+        <polyline points="16 17 21 12 16 7"></polyline>
+        <line x1="21" y1="12" x2="9" y2="12"></line>
+      </svg>
+      <h3>No Applications Yet</h3>
+      <p>You haven't submitted any loan applications yet.</p>
+      <button class="btn btn-primary" (click)="newApplication()">Submit Your First Application</button>
+    </div>
+
+    <div class="applications-grid" *ngIf="!loading && applications.length > 0">
+      <div class="application-card" *ngFor="let app of applications">
+        <div class="card-header">
+          <div class="status-badge" [ngClass]="getStatusClass(app.prediction.modelPrediction)">
+            {{ app.prediction.modelPrediction }}
+          </div>
+          <span class="application-date">{{ formatDate(app.timestamp) }}</span>
+        </div>
+
+        <div class="card-body">
+          <h3>{{ app.loanPurpose }}</h3>
+          
+          <div class="details-grid">
+            <div class="detail-item">
+              <span class="label">Loan Amount</span>
+              <span class="value">${{ app.loanAmount.toLocaleString() }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Credit Score</span>
+              <span class="value">{{ app.creditScore }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Risk Level</span>
+              <span class="value">{{ getRiskLevel(app.prediction.riskScore) }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Confidence</span>
+              <span class="value">{{ (app.prediction.confidence * 100).toFixed(0) }}%</span>
+            </div>
+          </div>
+
+          <div class="risk-bar">
+            <div class="risk-fill" [style.width.%]="app.prediction.riskScore * 100"></div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <button class="btn-text" (click)="viewApplication(app.applicationId)">View Details</button>
+          <button class="btn-text btn-danger" (click)="deleteApplication(app.applicationId)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,9 @@ export const environment = {
     messagingSenderId: "1065399079822",
     appId: "1:1065399079822:web:d0f32f172aa3b7d9fc4adf",
     measurementId: "G-DY118TWY51"
-  }
-}
+  },
+
+  model_api_url: 'https://12b6b2f57262.ngrok-free.app' // URL changes frequently
+};
 
 const app = initializeApp(environment.firebase);
