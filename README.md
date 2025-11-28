@@ -13,6 +13,7 @@ The technologies used for the development of this project include:
 - Node.js
 - Kaggle (for the dataset)
 - Firestore
+- Ngrok
 The dataset(s) utilised for the training and evaluation of the model can be obtained from here: [Kaggle](https://www.kaggle.com/search?q=loan+default+prediction).
 
 ## Project Environment
@@ -35,3 +36,16 @@ Google Collab was used to develop the loan prediction prediction model using Pyt
 - Imblearn
 - Matplotlib
 To install any one of the libraries, mentioned above, on Collab simply `import <desired library>`. If you are using VS Code or any other IDE, use the command `pip install <desired library>`.
+
+## Running the Application
+To run the application successfully, here are the key steps:
+1. Open your Angular frontend and navigate to the project folder. Run the command `ng serve` to start the Angular server which will serve the project.
+2. Run the Python code to start the model within your prefered IDE.
+3. Open Ngrok application which will open a command promopt. Within the command line, enter the command `ngrok http <desired port>` to create a tunnel between the frontend and the model.
+> [!TIP]
+> Jupyter Notebook of the Loan Prediction Model: [Loan-Default-Prediction.ipynb](https://github.com/user-attachments/files/23820280/Loan-Default-Prediction.ipynb)
+> 
+> Dataset and features: [Loan_default.csv](https://github.com/user-attachments/files/23820196/Loan_default.csv), 
+[feature_info.json](https://github.com/user-attachments/files/23820195/feature_info.json)
+
+
