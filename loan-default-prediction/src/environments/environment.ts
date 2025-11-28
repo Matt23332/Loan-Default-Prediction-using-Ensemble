@@ -13,7 +13,7 @@ export const environment = {
     measurementId: "G-DY118TWY51"
   },
 
-  model_api_url: 'https://12b6b2f57262.ngrok-free.app' // URL changes frequently
+  model_api_url: '' // Insert your local or deployed model API URL here
 };
 
 const app = initializeApp(environment.firebase);

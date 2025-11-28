@@ -1,0 +1,142 @@
+.container-fluid {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+.card-body {
+    padding: 2.5rem;
+}
+
+/* Form Elements */
+.form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
+    outline: none;
+}
+
+/* Button Styling */
+.btn-info {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.btn-info:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Alert Messages */
+.alert {
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: none;
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Header Styling */
+h4 {
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+/* Links */
+a {
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+.text-danger {
+    font-weight: 600;
+}
+
+/* Google Sign-in Card */
+.card.shadow.text-center {
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.card.shadow.text-center:hover {
+    border-color: #DB4437;
+    background-color: #fff5f5;
+    transform: translateY(-2px);
+}
+
+.card.shadow.text-center .card-body {
+    padding: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1.5rem;
+    }
+    
+    .col-4 {
+        flex: 0 0 100%;
+        max-width: 90%;
+    }
+}
+
+/* Row spacing for links */
+.row.mt-2 {
+    margin-top: 1rem !important;
+}
+
+.row .col-md-6 {
+    margin-top: 0.5rem;
+}
