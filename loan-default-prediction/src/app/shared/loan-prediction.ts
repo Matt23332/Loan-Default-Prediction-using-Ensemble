@@ -59,7 +59,7 @@ export class LoanPredictionService {
   private http = inject(HttpClient);
   private firestore = inject(Firestore);
 
-  private apiUrl = 'https://12b6b2f57262.ngrok-free.app';
+  private apiUrl = ''; // Insert your model API URL here
 
   constructor() {
     console.log('LoanPredictionService initialized');
